@@ -1,11 +1,14 @@
 class Parameters:
-    def __init__(self, l, w, h):
+    def __init__(self, l, w):
         self.length = l
         self.width = w
-        self.height = h
 
 
 class Room(Parameters):
+    def __init__(self, l, w, h):
+        super().__init__(l, w)
+        self.height = h
+
     def wall_area(self):
         wall_1 = self.length * self.height
         wall_2 = self.width * self.height
@@ -15,20 +18,17 @@ class Room(Parameters):
 
 class Window(Parameters):
     def window_area(self):
-        window = self.height * self.length
-        return window
+        return self.width * self.length
 
 
 class Door(Parameters):
     def door_area(self):
-        door = self.height * self.width
-        return door
+        return self.length * self.width
 
 
 class Wallpaper(Parameters):
     def get_paper_area(self):
-        paper_area = self.length * self.width
-        return paper_area
+        return self.length * self.width
 
 
 def area_to_wall_paper():
@@ -44,13 +44,13 @@ def area_to_wall_paper():
 r1 = Room(6, 3, 2.7)
 print('Room walls area: ', r1.wall_area())
 
-w1 = Window(1.5, 1, 2)
+w1 = Window(1.5, 2)
 print('Window area: ', w1.window_area())
 
-d1 = Door(1, 0.65, 2.3)
+d1 = Door(2.3, 0.65)
 print('Door area: ', d1.door_area())
 
-wp = Wallpaper(10, 1, 1)
+wp = Wallpaper(10, 1)
 print('Wall paper area: ', wp.get_paper_area())
 
 area_to_wall_paper()
