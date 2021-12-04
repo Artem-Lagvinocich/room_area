@@ -38,7 +38,6 @@ def area_to_wall_paper():
     print('Конечная площать для поклейки: ', area)
     print('Кол-во целлых руллонов для поклейки: ', count_rolls)
     print('Часть целого руллона: ', part_of_the_roll)
-    return area, count_rolls, part_of_the_roll
 
 
 r1 = Room(6, 3, 2.7)
