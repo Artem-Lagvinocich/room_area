@@ -8,9 +8,9 @@ class Parameters(ABC):
 
     @staticmethod
     def area_to_wall_paper():
-        area = r1.wall_area() - w1.window_area() - d1.door_area()
-        count_rolls = area // wp.get_paper_area()
-        part_of_the_roll = area % wp.get_paper_area()
+        area = room_parameters.wall_area() - window_parameters.get_area() - door_parameters.get_area()
+        count_rolls = area // wall_paper_parameters.get_area()
+        part_of_the_roll = area % wall_paper_parameters.get_area()
         print('Конечная площать для поклейки: ', area)
         print('Кол-во целлых руллонов для поклейки: ', count_rolls)
         print('Часть целого руллона: ', part_of_the_roll)
@@ -28,31 +28,21 @@ class Room(Parameters):
         return room_walls
 
 
-class Window(Parameters):
-    def window_area(self):
+class Counting(Parameters):
+    def get_area(self):
         return self.width * self.length
 
 
-class Door(Parameters):
-    def door_area(self):
-        return self.length * self.width
+room_parameters = Room(6, 3, 2.7)
+print('Room walls area: ', room_parameters.wall_area())
 
+window_parameters = Counting(1.5, 2)
+print('Window area: ', window_parameters.get_area())
 
-class Wallpaper(Parameters):
-    def get_paper_area(self):
-        return self.length * self.width
+door_parameters = Counting(2.3, 0.65)
+print('Door area: ', door_parameters.get_area())
 
-
-r1 = Room(6, 3, 2.7)
-print('Room walls area: ', r1.wall_area())
-
-w1 = Window(1.5, 2)
-print('Window area: ', w1.window_area())
-
-d1 = Door(2.3, 0.65)
-print('Door area: ', d1.door_area())
-
-wp = Wallpaper(10, 1)
-print('Wall paper area: ', wp.get_paper_area())
+wall_paper_parameters = Counting(10, 1)
+print('Wall paper area: ', wall_paper_parameters.get_area())
 
 Parameters.area_to_wall_paper()
