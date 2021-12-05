@@ -6,8 +6,8 @@ class Parameters(ABC):
         self.length = l
         self.width = w
 
-    @abstractmethod
-    def area_to_wall_paper(self, r1, w1, d1):
+    @staticmethod
+    def area_to_wall_paper():
         area = r1.wall_area() - w1.window_area() - d1.door_area()
         count_rolls = area // wp.get_paper_area()
         part_of_the_roll = area % wp.get_paper_area()
