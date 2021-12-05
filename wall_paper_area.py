@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
 
 class Parameters(ABC):
@@ -21,7 +21,6 @@ class Room(Parameters):
         super().__init__(l, w)
         self.height = h
 
-    @abstractmethod
     def wall_area(self):
         wall_1 = self.length * self.height
         wall_2 = self.width * self.height
@@ -30,19 +29,16 @@ class Room(Parameters):
 
 
 class Window(Parameters):
-    @abstractmethod
     def window_area(self):
         return self.width * self.length
 
 
 class Door(Parameters):
-    @abstractmethod
     def door_area(self):
         return self.length * self.width
 
 
 class Wallpaper(Parameters):
-    @abstractmethod
     def get_paper_area(self):
         return self.length * self.width
 
@@ -59,4 +55,4 @@ print('Door area: ', d1.door_area())
 wp = Wallpaper(10, 1)
 print('Wall paper area: ', wp.get_paper_area())
 
-# area_to_wall_paper()
+Parameters.area_to_wall_paper()
