@@ -33,6 +33,9 @@ class Counting(Parameters):
         return self.width * self.length
 
 
+room_parameters = Room(6, 3, 2.7)
+print('Room walls area: ', room_parameters.wall_area())
+
 window_parameters = Counting(1.5, 2)
 print('Window area: ', window_parameters.get_area())
 
